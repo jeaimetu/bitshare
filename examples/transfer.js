@@ -5,13 +5,14 @@ var privKey = "5KBuq5WmHvgePmB7w3onYsqLM8ESomM2Ae7SigYuuwg8MDHW7NN";
 let pKey = PrivateKey.fromWif(privKey);
 
 //Apis.instance("wss://node.testnet.bitshares.eu", true)
-Apis.instance("wss://bitshares.openledger.info/w", true)
+console.log("transfer test");
+Apis.instance("wss://bitshares.openledger.info/ws", true)
 .init_promise.then((res) => {
     console.log("connected to:", res[0].network_name, "network");
 
     ChainStore.init().then(() => {
 
-        let fromAccount = "bitsharesjs";
+        let fromAccount = "jeaimetu-free";
         let memoSender = fromAccount;
         let memo = "Testing transfer from node.js";
 
