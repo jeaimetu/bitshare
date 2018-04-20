@@ -7,7 +7,7 @@
         "crypto": false
     },
     "scripts": {
-        "start": "node examples/transfer",
+        "start": "babel-node examples/transfer",
         "test": "cross-env BABEL_ENV=test mocha --compilers js:babel-register --recursive",
         "test:chain": "cross-env BABEL_ENV=test mocha --compilers js:babel-register ./test/chain --recursive",
         "test:ecc": "cross-env BABEL_ENV=test mocha --compilers js:babel-register ./test/ecc --recursive",
