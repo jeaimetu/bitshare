@@ -4,7 +4,8 @@ import {ChainStore, FetchChain, PrivateKey, TransactionHelper, Aes, TransactionB
 var privKey = "5KBuq5WmHvgePmB7w3onYsqLM8ESomM2Ae7SigYuuwg8MDHW7NN";
 let pKey = PrivateKey.fromWif(privKey);
 
-Apis.instance("wss://node.testnet.bitshares.eu", true)
+//Apis.instance("wss://node.testnet.bitshares.eu", true)
+Apis.instance("wss://bitshares.openledger.info/w", true)
 .init_promise.then((res) => {
     console.log("connected to:", res[0].network_name, "network");
 
@@ -28,7 +29,7 @@ Apis.instance("wss://node.testnet.bitshares.eu", true)
                 FetchChain("getAsset", sendAmount.asset),
                 FetchChain("getAsset", sendAmount.asset)
             ]).then((res)=> {
-                // console.log("got data:", res);
+                console.log("got data:", res);
                 let [fromAccount, toAccount, memoSender, sendAsset, feeAsset] = res;
 
                 // Memos are optional, but if you have one you need to encrypt it here
