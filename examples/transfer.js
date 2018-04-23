@@ -5,6 +5,24 @@ import {ChainStore, FetchChain, PrivateKey, TransactionHelper, Aes, TransactionB
 var privKey = process.env.privKey;
 let pKey = PrivateKey.fromWif(privKey);
 
+var MongoClient = require('mongodb').MongoClient;
+var url = MONGODB_URI;
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("heroku_9cf4z9w3");
+  var query = { ispaid : "no" };
+  dbo.collection("customers").find(query).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+
+
+process.exit()
+
 //Apis.instance("wss://node.testnet.bitshares.eu", true)
 console.log("transfer test");
 Apis.instance("wss://bitshares.openledger.info/ws", true)
