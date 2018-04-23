@@ -106,7 +106,7 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
                 tr.set_required_fees().then(() => {
                     tr.add_signer(pKey, pKey.toPublicKey().toPublicKeyString());
                     console.log("serialized transaction:", tr.serialize());
-                    tr.broadcast(function(err, result) {
+                    tr.broadcast(() => {
                           if (err){
                             consoloe.log("broadcast error");
                             throw err;
