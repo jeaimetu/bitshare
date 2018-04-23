@@ -14,7 +14,11 @@ MongoClient.connect(url, function(err, db) {
   var query = { ispaid : "no" };
   dbo.collection("customers").find(query).toArray(function(err, result) {
     if (err) throw err;
-    console.log(result);
+    //console.log(result);
+    result.forEach((product, index) => {
+      console.log(product.bitshare);
+    });
+    
     db.close();
   });
 });
