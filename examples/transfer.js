@@ -21,8 +21,9 @@ MongoClient.connect(url, function(err, db) {
 
 
 
-process.exit()
+//process.exit()
 
+function btsTransfer(btsid){
 //Apis.instance("wss://node.testnet.bitshares.eu", true)
 console.log("transfer test");
 Apis.instance("wss://bitshares.openledger.info/ws", true)
@@ -91,3 +92,4 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
             });
     });
 });
+}//end of function
