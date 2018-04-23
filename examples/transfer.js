@@ -18,7 +18,7 @@ MongoClient.connect(url, function(err, db) {
     var count = 0;
     result.forEach((product, index) => {
       console.log(product.bitshare);
-      if(count < 3){
+      if(count < 1){
         btsTransfer(product.bitshare);
         count++;
         //update DB
