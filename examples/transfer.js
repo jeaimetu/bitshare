@@ -19,13 +19,13 @@ MongoClient.connect(url, function(err, db) {
   });
 });
 
-
+btsTransfer("jeaimetu-test");
 
 //process.exit()
 
 function btsTransfer(btsid){
 //Apis.instance("wss://node.testnet.bitshares.eu", true)
-console.log("transfer test");
+console.log("transfer test", btsid);
 Apis.instance("wss://bitshares.openledger.info/ws", true)
 .init_promise.then((res) => {
     console.log("connected to:", res[0].network_name, "network");
