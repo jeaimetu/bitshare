@@ -15,9 +15,22 @@ MongoClient.connect(url, function(err, db) {
   dbo.collection("customers").find(query).toArray(function(err, result) {
     if (err) throw err;
     //console.log(result);
+    var count = 0;
     result.forEach((product, index) => {
       console.log(product.bitshare);
-      btsTransfer(product.bitshare);
+      if(count < 3){
+        btsTransfer(product.bitshare);
+        count++;
+        //update DB
+        var myquery = { bitshare : product.bitshare };
+        var newvalues = { $set: {ispaid: "ing" }};
+        dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
+          if (err) throw err;
+          console.log("1 document updated");
+        });
+                         
+        
+      }
     });
     
     db.close();
