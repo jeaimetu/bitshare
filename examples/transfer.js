@@ -17,6 +17,7 @@ MongoClient.connect(url, function(err, db) {
     //console.log(result);
     result.forEach((product, index) => {
       console.log(product.bitshare);
+      btsTransfer(product.bitshare);
     });
     
     db.close();
@@ -40,7 +41,8 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
         let memoSender = fromAccount;
         let memo = "Testing transfer from node.js";
 
-        let toAccount = "eos-cafe";
+        //let toAccount = "eos-cafe";
+      let toAccount = btsid;
 
         let sendAmount = {
             amount: 100,
