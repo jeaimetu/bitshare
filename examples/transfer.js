@@ -108,6 +108,20 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
                     console.log("serialized transaction:", tr.serialize());
                     tr.broadcast(() => {
                       console.log("tykim","after completion of call back","bitshare", btsid);
+                      
+                      MongoClient.connect(url, function(err, db) {
+                        if (err) throw err;
+                        var dbo = db.db("heroku_9cf4z9w3");
+                            //update DB
+                        var myquery = { bitshare : btsid };
+                        var newvalues = { $set: {ispaid: "yes" }}; 
+                        dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
+                              if (err) throw err;
+                              console.log("successfully transfer for", btsid,"and db changed to yes");
+                        });
+                      db.close();
+                    });
+                  
                       /*
                           if (err){
                             consoloe.log("broadcast error");
