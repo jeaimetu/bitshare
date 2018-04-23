@@ -107,13 +107,15 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
                     tr.add_signer(pKey, pKey.toPublicKey().toPublicKeyString());
                     console.log("serialized transaction:", tr.serialize());
                     tr.broadcast(() => {
+                      console.log("tykim","after completion of call back");
+                      /*
                           if (err){
                             consoloe.log("broadcast error");
                             throw err;
                             
                                   }
                        console.log("broadcast callback"); 
-                          console.log(result);
+                          console.log(result);*/
                     });
                 })
             });
