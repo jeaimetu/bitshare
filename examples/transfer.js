@@ -58,7 +58,7 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
       let toAccount = btsid;
 
         let sendAmount = {
-            amount: 100,
+            amount: 1000000,
             asset: "BEANS"
         }
 
