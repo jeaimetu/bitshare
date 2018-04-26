@@ -23,7 +23,7 @@ MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("heroku_9cf4z9w3");
   var query = { ispaid : "no" };
-  dbo.collection("customers").findone(query, function(err, result) {
+  dbo.collection("customers").findOne(query, function(err, result) {
     if (err) throw err;
     //console.log(result);
       console.log(result.bitshare);
