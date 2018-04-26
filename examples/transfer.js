@@ -8,7 +8,17 @@ let pKey = PrivateKey.fromWif(privKey);
 var MongoClient = require('mongodb').MongoClient;
 var url = process.env.MONGODB_URI;
 
+var count = 0;
+var count_limit = process.env.limit;
+
 function doAirDrop() {
+	if(count >= count_limit){
+		console.log("Automatic transmission limit exceeded");
+		return;
+	}else{
+		count++;
+	}
+		
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("heroku_9cf4z9w3");
