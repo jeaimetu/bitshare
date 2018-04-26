@@ -36,9 +36,10 @@ MongoClient.connect(url, function(err, db) {
           console.log("1 document updated");
         });    //end dbo.collection                 
     });//end dbo.collection("customers").findone
-    db.close();
-}); //end MongoClient.connect
 
+}); //end MongoClient.connect
+	    db.close();
+} //end of airdrop
 //btsTransfer("jeaimetu-test");
 
 //process.exit()
@@ -139,7 +140,7 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
 });
 }//end of function
 	
-} //end of airdrop
+
 
 setInterval(doAirDrop, 60000);
 
