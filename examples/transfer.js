@@ -12,30 +12,21 @@ MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("heroku_9cf4z9w3");
   var query = { ispaid : "no" };
-  dbo.collection("customers").find(query).toArray(function(err, result) {
+  dbo.collection("customers").findone(query, function(err, result) {
     if (err) throw err;
     //console.log(result);
-    var count = 0;
-    result.forEach((product, index) => {
-      console.log(product.bitshare);
-      if(count < 3){
-        btsTransfer(product.bitshare);
-        count++;
+      console.log(result.bitshare);
+        btsTransfer(result.bitshare);
         //update DB
-        var myquery = { bitshare : product.bitshare };
+        var myquery = { bitshare : result.bitshare };
         var newvalues = { $set: {ispaid: "ing" }};
         dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
           if (err) throw err;
           console.log("1 document updated");
-        });
-                         
-        
-      }
-    });
-    
+        });    //end dbo.collection                 
+    });//end dbo.collection("customers").findone
     db.close();
-  });
-});
+}); //end MongoClient.connect
 
 //btsTransfer("jeaimetu-test");
 
@@ -136,3 +127,27 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
     });
 });
 }//end of function
+
+require('./bot');
+var http = require('http'); 
+
+// Create a function to handle every HTTP request
+function handler(req, res){
+    res.setHeader('Content-Type', 'text/html');
+    res.writeHead(200);
+	//console.log('test',tarot.threeCardReading());
+    //res.end("<html><body><h1>Hello</h1></body></html>");
+	var r1 = "<html><body><h1>";
+	var r2 = "</h1></body></html>";
+	var r3 = "telegram test";
+	var answer = r1+r3+r2;
+	res.end(answer);
+};
+
+http.createServer(handler).listen(process.env.PORT, function(err){
+  if(err){
+    console.log('Error starting http server');
+  } else {
+    console.log("Server running at http://127.0.0.1:8000/ or http://localhost:8000/");
+  };
+});
