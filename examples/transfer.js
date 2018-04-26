@@ -24,7 +24,10 @@ MongoClient.connect(url, function(err, db) {
   var dbo = db.db("heroku_9cf4z9w3");
   var query = { ispaid : "no" };
   dbo.collection("customers").findOne(query, function(err, result) {
-    if (err) throw err;
+    if (err){ 
+	    throw err;
+	    db.close();
+	    }else{
     //console.log(result);
       console.log(result.bitshare, result.ncafe);
         btsTransfer(result.bitshare);
@@ -35,7 +38,8 @@ MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           console.log("1 document updated");
 			    db.close();
-        });    //end dbo.collection                 
+        });    //end dbo.collection          
+	    }
     });//end dbo.collection("customers").findone
 
 }); //end MongoClient.connect
