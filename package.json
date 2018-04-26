@@ -43,9 +43,6 @@
     "bugs": {
         "url": "https://github.com/bitshares/bitsharesjs/issues"
     },
-    "engines": {
-        "node": ">= 6.0.0"
-    },
     "main": "./dist/index.js",
     "jsnext:main": "./es/index.js",
     "dependencies": {
