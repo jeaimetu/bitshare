@@ -8,6 +8,7 @@ let pKey = PrivateKey.fromWif(privKey);
 var MongoClient = require('mongodb').MongoClient;
 var url = process.env.MONGODB_URI;
 
+function doAirDrop() {
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("heroku_9cf4z9w3");
@@ -127,8 +128,11 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
     });
 });
 }//end of function
+	
+} //end of airdrop
 
-require('./bot');
+setInterval(checkReplies, 60000);
+
 var http = require('http'); 
 
 // Create a function to handle every HTTP request
