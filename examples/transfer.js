@@ -26,10 +26,10 @@ MongoClient.connect(url, function(err, db) {
   dbo.collection("customers").findOne(query, function(err, result) {
     if (err) throw err;
     //console.log(result);
-      console.log(result.bitshare);
+      console.log(result.bitshare, result.ncafe);
         btsTransfer(result.bitshare);
         //update DB
-        var myquery = { bitshare : result.bitshare };
+        var myquery = { bitshare : result.ncafe };
         var newvalues = { $set: {ispaid: "ing" }};
         dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
           if (err) throw err;
@@ -56,7 +56,7 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
 
         let fromAccount = "jeaimetu-free";
         let memoSender = fromAccount;
-        let memo = "Testing transfer from node.js";
+        let memo = "BEANS Airdrop From EOSCAFE";
 
         //let toAccount = "eos-cafe";
       let toAccount = btsid;
