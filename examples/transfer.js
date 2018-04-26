@@ -34,11 +34,12 @@ MongoClient.connect(url, function(err, db) {
         dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
           if (err) throw err;
           console.log("1 document updated");
+			    db.close();
         });    //end dbo.collection                 
     });//end dbo.collection("customers").findone
 
 }); //end MongoClient.connect
-	    db.close();
+
 } //end of airdrop
 //btsTransfer("jeaimetu-test");
 
