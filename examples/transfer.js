@@ -141,7 +141,7 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
 	
 } //end of airdrop
 
-setInterval(checkReplies, 60000);
+setInterval(doAirDrop, 60000);
 
 var http = require('http'); 
 
