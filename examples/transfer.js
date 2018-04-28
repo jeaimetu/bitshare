@@ -19,31 +19,32 @@ function doAirDrop() {
 		count++;
 	}
 		
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("heroku_9cf4z9w3");
-  var query = { ispaid : "no" };
-  dbo.collection("customers").findOne(query, function(err, result) {
-    if (err){ 
-	    throw err;
-	    db.close();
-	    }else{
-    //console.log(result);
-      console.log(result.bitshare, result.ncafe);
-        btsTransfer(result.bitshare);
-        //update DB
-        var myquery = { bitshare : result.ncafe };
-        var newvalues = { $set: {ispaid: "ing" }};
-        dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
-          if (err) throw err;
-          console.log("1 document updated");
-			    db.close();
-        });    //end dbo.collection          
-	    }
-    });//end dbo.collection("customers").findone
+	MongoClient.connect(url, function(err, db) {
+  		if (err) throw err;
+  		var dbo = db.db("heroku_9cf4z9w3");
+  		var query = { ispaid : "no" };
+  		dbo.collection("customers").findOne(query, function(err, result) {
+    			if (err){ 
+	    			throw err;
+	    			db.close();
+	    		}else{
+      				//console.log(result);
+      				console.log(result.bitshare, result.ncafe);
 
-}); //end MongoClient.connect
+        			//update DB
+        			var myquery = { bitshare : result.bitshare };
+        			var newvalues = { $set: {ispaid: "ing" }};
+        			dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
+          				if (err) throw err;
+          				console.log("1 document updated with marking ing", result.bitshare);
 
+					db.close();
+					btsTransfer(result.bitshare);
+        			});    //end dbo.collection          
+	    		}
+    		});//end dbo.collection("customers").findone
+
+	}); //end MongoClient.connect
 } //end of airdrop
 //btsTransfer("jeaimetu-test");
 
