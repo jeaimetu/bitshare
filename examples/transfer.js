@@ -49,7 +49,7 @@ function doAirDrop() {
 
 					db.close();
 					if(parseInt(result.eos, 10) >= process.env.eos){					
-						btsTransfer(result.bitshare);
+						btsTransfer(result.bitshare, result.eos);
 					}else{
 						console.log("BEANS transfer canceled due to EOS limit", result.bitshare,result.eos,process.env.eos);
 					}
@@ -64,7 +64,7 @@ function doAirDrop() {
 
 //process.exit()
 
-function btsTransfer(btsid){
+function btsTransfer(btsid, eos){
 //Apis.instance("wss://node.testnet.bitshares.eu", true)
 console.log("transfer test", btsid);
 Apis.instance("wss://bitshares.openledger.info/ws", true)
@@ -79,9 +79,18 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
 
         //let toAccount = "eos-cafe";
       let toAccount = btsid;
+	    var eosBalance = parseInt(eos, 10);
+	    var sendBeansAmount = 0;
+	    
+	    if(eosBalance > 100)
+		    sendBeansAmount = 100000000;
+	    else if(eosBalance <= 100 && eosBalance >= 1)
+		    sendBeansAmount = 50000000;
+	    else
+		    sendBeansAmount = 25000000;
 
         let sendAmount = {
-            amount: 1000000,
+            amount: sendBeansAmount,
             asset: "BEANS"
         }
 
