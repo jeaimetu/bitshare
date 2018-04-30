@@ -12,7 +12,7 @@ var count = 0;
 var count_limit = process.env.limit;
 
 function doAirDrop() {
-	if(process.env.on != true){
+	if(process.env.on.toString() != "true"){
 		console.log("working flag is false go to sleep");
 		return;
 	}
@@ -33,7 +33,7 @@ function doAirDrop() {
 	    			throw err;
 	    			db.close();
 	    		}else{
-      				//console.log(result);
+      				console.log(result);
       				console.log(result.bitshare, result.ncafe);
 
         			//update DB
