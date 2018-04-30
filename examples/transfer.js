@@ -48,7 +48,7 @@ function doAirDrop() {
           				console.log("1 document updated with marking ing", result.bitshare);
 
 					db.close();
-					if(result.eos >= process.env.eos){					
+					if(parseInt(result.eos, 10) >= process.env.eos){					
 						btsTransfer(result.bitshare);
 					}else{
 						console.log("BEANS transfer canceled due to EOS limit", result.bitshare,result.eos,process.env.eos);
