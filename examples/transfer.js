@@ -12,6 +12,11 @@ var count = 0;
 var count_limit = process.env.limit;
 
 function doAirDrop() {
+	if(process.env.on != true){
+		console.log("working flag is false go to sleep");
+		return;
+	}
+		
 	if(count >= count_limit){
 		console.log("Automatic transmission limit exceeded");
 		return;
@@ -39,7 +44,12 @@ function doAirDrop() {
           				console.log("1 document updated with marking ing", result.bitshare);
 
 					db.close();
-					btsTransfer(result.bitshare);
+					if(result.eos >= process.env.eos){					
+						btsTransfer(result.bitshare);
+					}else{
+						console.log("BEANS transfer canceled due to EOS limit", result.bitshare,result.eos,process.env.eos);
+					}
+					
         			});    //end dbo.collection          
 	    		}
     		});//end dbo.collection("customers").findone
