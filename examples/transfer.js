@@ -34,6 +34,10 @@ function doAirDrop() {
 	    			db.close();
 	    		}else{
       				console.log(result);
+				if(result == null){
+					console.log("there is nothing to process");
+					return;
+				}
       				console.log(result.bitshare, result.ncafe);
 
         			//update DB
