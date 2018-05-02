@@ -227,7 +227,7 @@ function handler(req, res){
 			[{$group : {_id : "$refer", num_tutorial : {$sum : 1}}}],
   			function( err, data ) {
     				if ( err ) throw err;
-    				console.log( JSON.stringify( data, undefined, 2 ) );
+    				console.log( data );
   			}
 		);
 	});
