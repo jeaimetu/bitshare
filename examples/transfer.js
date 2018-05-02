@@ -11,9 +11,10 @@ var url = process.env.MONGODB_URI;
 var count = 0;
 var count_limit = process.env.limit;
 
-
+/*
 var PythonShell = require('python-shell');
  
+
 console.log("run phython shell");
 PythonShell.run('examples/balance.py', function (err, result) {
   if (err) throw err;
@@ -21,7 +22,7 @@ PythonShell.run('examples/balance.py', function (err, result) {
   console.log('finished');
 });
 console.log("complete python shell");
-
+*/
 
 function doAirDrop() {
 	if(process.env.on.toString() != "true"){
