@@ -1,1 +1,1 @@
-dd
+web : babel-node examples/transfer
