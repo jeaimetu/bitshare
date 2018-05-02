@@ -261,7 +261,7 @@ function handler(req, res){
 	var r1 = "<html><body><h1>";
 	var r2 = "</h1></body></html>";
 	var r3 = "telegram test";
-	r3 += data;
+	//r3 += data;
 	var answer = r1+r3+r2;
 	res.end(answer);
 	//make html body
