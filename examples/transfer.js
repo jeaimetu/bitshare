@@ -14,10 +14,12 @@ var count_limit = process.env.limit;
 
 var PythonShell = require('python-shell');
  
+console.log("run phython shell");
 PythonShell.run('examples/balance.py', function (err) {
   if (err) throw err;
   console.log('finished');
 });
+console.log("complete python shell");
 
 
 function doAirDrop() {
