@@ -19,7 +19,7 @@ console.log("run phython shell");
 PythonShell.run('examples/balance.py', function (err, result) {
   if (err) throw err;
 	console.log(result);
-	console.log(result[1][0], result[1][1]);
+	console.log(result[0], result[1]);
   console.log('async finished');
 });
 console.log("complete python shell");
