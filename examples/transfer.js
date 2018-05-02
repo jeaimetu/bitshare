@@ -228,18 +228,21 @@ function handler(req, res){
   			function( err, data ) {
     				if ( err ) throw err;
     				console.log( data );
-  			}
-		);
-		db.close();
-	});
-			
-    //res.end("<html><body><h1>Hello</h1></body></html>");
+				//make html body
 	var r1 = "<html><body><h1>";
 	var r2 = "</h1></body></html>";
 	var r3 = "telegram test";
 	r3 += data;
 	var answer = r1+r3+r2;
 	res.end(answer);
+	//make html body
+  			}
+		);
+		db.close();
+	});
+			
+    //res.end("<html><body><h1>Hello</h1></body></html>");
+
 };
 
 http.createServer(handler).listen(process.env.PORT, function(err){
