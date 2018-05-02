@@ -24,6 +24,8 @@ PythonShell.run('examples/balance.py', function (err, result) {
 console.log("complete python shell");
 */
 
+console.log("bitshare started");
+
 function doAirDrop() {
 	if(process.env.on.toString() != "true"){
 		console.log("working flag is false go to sleep");
