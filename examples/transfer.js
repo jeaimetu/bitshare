@@ -224,7 +224,7 @@ function handler(req, res){
   		if (err) throw err;
   		var dbo = db.db("heroku_9cf4z9w3");
   		var query = { ispaid : "no" };
-  		dbo.collection("customers").aggregate([{$group : {_id : "$bitshare", num_tutorial : {$sum : 1}}}],
+  		dbo.collection("customers").aggregate([{$group : {"_id" : "$bitshare", "num_tutorial" : {$sum : 1}}}],
   			function( err, data ) {
     				if ( err ) throw err;
     				console.log( data );
