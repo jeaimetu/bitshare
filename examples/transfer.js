@@ -220,6 +220,29 @@ function handler(req, res){
     res.writeHead(200);
 	//console.log('test',tarot.threeCardReading());
 	
+	MongoClient.connect(url, (err, db) => {
+    
+    assert.equal(null, err);
+  
+    sumCars(db, () => {
+        
+        db.close();
+    });
+});
+	
+	var sumCars = (db, callback) => {
+    
+    var agr = [{$group: {_id: 1, all: { $sum: "$bitshare" } }}];  
+        
+    var cursor = db.collection('customers').aggregate(agr).toArray( (err, res) => {
+        
+       assert.equal(err, null);
+       console.log(res);
+       
+       callback(res);        
+    });   
+};
+	/*
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		var dbo = db.db("heroku_9cf4z9w3");
@@ -228,7 +251,13 @@ function handler(req, res){
   			function( err, data ) {
     				if ( err ) throw err;
     				console.log( data.toArray() );
-				//make html body
+
+  			}
+		);
+		db.close();
+	});*/
+	
+					//make html body
 	var r1 = "<html><body><h1>";
 	var r2 = "</h1></body></html>";
 	var r3 = "telegram test";
@@ -236,10 +265,6 @@ function handler(req, res){
 	var answer = r1+r3+r2;
 	res.end(answer);
 	//make html body
-  			}
-		);
-		db.close();
-	});
 			
     //res.end("<html><body><h1>Hello</h1></body></html>");
 
