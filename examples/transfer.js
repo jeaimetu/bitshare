@@ -233,8 +233,8 @@ function handler(req, res){
 	var sumCars = (db, callback) => {
     
     var agr = [{$group: {_id: 1, all: { $sum: "$bitshare" } }}];  
-        
-    var cursor = db.collection('customers').aggregate(agr).toArray( (err, res) => {
+        var dbo = db.db("heroku_9cf4z9w3");
+    var cursor = dbo.collection('customers').aggregate(agr).toArray( (err, res) => {
         
        assert.equal(err, null);
        console.log(res);
