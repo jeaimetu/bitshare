@@ -11,7 +11,7 @@ var url = process.env.MONGODB_URI;
 var count = 0;
 var count_limit = process.env.limit;
 
-/*
+
 var PythonShell = require('python-shell');
  
 
@@ -22,7 +22,7 @@ PythonShell.run('examples/balance.py', function (err, result) {
   console.log('finished');
 });
 console.log("complete python shell");
-*/
+
 
 console.log("bitshare started");
 
