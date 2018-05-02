@@ -15,28 +15,38 @@ var count_limit = process.env.limit;
 var PythonShell = require('python-shell');
  
 
-console.log("run phython shell");
-PythonShell.run('examples/balance.py', function (err, result) {
-  if (err) throw err;
-	console.log(result);
-	console.log(result[0], result[1]);
+function balanceCheck(){
+	console.log("run phython shell");
+	PythonShell.run('examples/balance.py', function (err, result) {
+  		if (err) throw err;
+		console.log(result);
+		console.log(result[0], result[1]);
 	
-	var btsTemp = result[0].split(".");
-	console.log(btsTemp);
-	btsTemp[0] = btsTemp[0].replace(/,/g, "");
-	var btsBalance = parseInt(btsTemp[0], 10);
+		var btsTemp = result[0].split(".");
+		console.log(btsTemp);
+		btsTemp[0] = btsTemp[0].replace(/,/g, "");
+		var btsBalance = parseInt(btsTemp[0], 10);
 	
-	var beansTemp = result[1].split(".");
-	console.log(beansTemp);
-	beansTemp[0] = beansTemp[0].replace(/,/g, "");
-	console.log(beansTemp[0]);
-	var beansBalance = parseInt(beansTemp[0], 10);
-	console.log("trasformed", btsBalance, beansBalance);
+		var beansTemp = result[1].split(".");
+		console.log(beansTemp);
+		beansTemp[0] = beansTemp[0].replace(/,/g, "");
+		console.log(beansTemp[0]);
+		var beansBalance = parseInt(beansTemp[0], 10);
+		console.log("trasformed", btsBalance, beansBalance);
 	
-  console.log('async finished');
-});
-console.log("complete python shell");
-
+  		console.log('async finished');
+		
+		//balance check and call airdrop or pending
+		if(beansBalance < 20000 || btsBalance < 1){
+			console.log("balance is not enough");
+		}else{
+			doAirDrop();
+		}
+			
+				    
+	});
+	console.log("complete python shell");
+}
 
 console.log("bitshare started");
 
@@ -200,7 +210,7 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
 	
 
 
-setInterval(doAirDrop, 60000);
+setInterval(balanceCheck, 60000);
 
 var http = require('http'); 
 
