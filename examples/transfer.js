@@ -11,6 +11,15 @@ var url = process.env.MONGODB_URI;
 var count = 0;
 var count_limit = process.env.limit;
 
+
+var PythonShell = require('python-shell');
+ 
+PythonShell.run('balance.py', function (err) {
+  if (err) throw err;
+  console.log('finished');
+});
+
+
 function doAirDrop() {
 	if(process.env.on.toString() != "true"){
 		console.log("working flag is false go to sleep");
