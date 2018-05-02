@@ -14,7 +14,7 @@ var count_limit = process.env.limit;
 
 var PythonShell = require('python-shell');
  
-PythonShell.run('balance.py', function (err) {
+PythonShell.run('/app/examples/balance.py', function (err) {
   if (err) throw err;
   console.log('finished');
 });
