@@ -227,7 +227,7 @@ function handler(req, res){
   		dbo.collection("customers").aggregate([{$group : {"_id" : "$bitshare", "num_tutorial" : {$sum : 1}}}],
   			function( err, data ) {
     				if ( err ) throw err;
-    				console.log( data );
+    				console.log( data.toArray() );
 				//make html body
 	var r1 = "<html><body><h1>";
 	var r2 = "</h1></body></html>";
