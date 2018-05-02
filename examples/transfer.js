@@ -20,10 +20,10 @@ PythonShell.run('examples/balance.py', function (err, result) {
   if (err) throw err;
 	console.log(result);
 	console.log(result[0], result[1]);
-	var btsBalance = result[0].split(" ");
-	btsBalance = parseInt(btsBalance[0], 10);
-	var beansBalance = result[1].split(" ");
-	beansBalance = parseInt(beansBalance[0], 10);
+	var btsTemp = result[0].split(" ");
+	var btsBalance = parseInt(btsTemp[0], 10);
+	var beansTemp = result[1].split(" ");
+	var beansBalance = parseInt(beansTemp[0], 10);
 	console.log("trasformed", btsBalance, beansBalance);
 	
   console.log('async finished');
