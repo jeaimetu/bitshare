@@ -222,7 +222,7 @@ function handler(req, res){
 	
 	MongoClient.connect(url, (err, db) => {
     
-    assert.equal(null, err);
+    //assert.equal(null, err);
   
     sumCars(db, () => {
         
