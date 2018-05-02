@@ -21,6 +21,7 @@ PythonShell.run('examples/balance.py', function (err, result) {
 	console.log(result);
 	console.log(result[0], result[1]);
 	var btsTemp = result[0].split(" ");
+	console.log(btsTemp);
 	var btsBalance = parseInt(btsTemp[0], 10);
 	var beansTemp = result[1].split(" ");
 	var beansBalance = parseInt(beansTemp[0], 10);
