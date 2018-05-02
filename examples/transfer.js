@@ -219,24 +219,25 @@ function handler(req, res){
     res.setHeader('Content-Type', 'text/html');
     res.writeHead(200);
 	//console.log('test',tarot.threeCardReading());
-	/*
+	
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		var dbo = db.db("heroku_9cf4z9w3");
   		var query = { ispaid : "no" };
-  		dbo.collection("customers").aggregate(
-			[{$group : {_id : "$refer", num_tutorial : {$sum : 1}}}],
+  		dbo.collection("customers").aggregate([{$group : {_id : "$bts", num_tutorial : {$sum : 1}}}],
   			function( err, data ) {
     				if ( err ) throw err;
     				console.log( data );
   			}
 		);
-	});*/
+		db.close();
+	});
 			
     //res.end("<html><body><h1>Hello</h1></body></html>");
 	var r1 = "<html><body><h1>";
 	var r2 = "</h1></body></html>";
 	var r3 = "telegram test";
+	r3 += data;
 	var answer = r1+r3+r2;
 	res.end(answer);
 };
