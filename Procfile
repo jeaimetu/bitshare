@@ -1,1 +1,1 @@
-web : babel-node examples/transfer
+worker : npm example:transfer
