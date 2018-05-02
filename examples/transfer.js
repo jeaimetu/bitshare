@@ -236,7 +236,7 @@ function handler(req, res){
         var dbo = db.db("heroku_9cf4z9w3");
     var cursor = dbo.collection('customers').aggregate(agr).toArray( (err, res) => {
         
-       assert.equal(err, null);
+       //assert.equal(err, null);
        console.log(res);
        
        callback(res);        
