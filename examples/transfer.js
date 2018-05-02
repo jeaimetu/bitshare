@@ -23,11 +23,12 @@ PythonShell.run('examples/balance.py', function (err, result) {
 	
 	var btsTemp = result[0].split(".");
 	console.log(btsTemp);
+	btsTemp[0] = btsTemp[0].replace(/,/g, "");
 	var btsBalance = parseInt(btsTemp[0], 10);
 	
 	var beansTemp = result[1].split(".");
 	console.log(beansTemp);
-	beansTemp[0] = beansTemp[0].replace("/,/g", "");
+	beansTemp[0] = beansTemp[0].replace(/,/g, "");
 	console.log(beansTemp[0]);
 	var beansBalance = parseInt(beansTemp[0], 10);
 	console.log("trasformed", btsBalance, beansBalance);
