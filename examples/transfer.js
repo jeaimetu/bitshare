@@ -218,6 +218,7 @@ function getRank(){
 	MongoClient.connect(url, (err, db) => {
 		sumCars(db, (result) => {
 			db.close();
+			console.log("getRank",result);
 			return result;
 		});
 	});
@@ -312,6 +313,7 @@ app.set('views',"examples/views");
 // index page 
 app.get('/', function(req, res) {
 	var drinks = getRank();
+	console.log(drinks);
 	/*
     var drinks = [
         { name: 'Bloody Mary', drunkness: 3 },
