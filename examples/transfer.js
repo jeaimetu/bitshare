@@ -219,7 +219,7 @@ function getRank(callback){
 		sumCars(db, (result) => {
 			db.close();
 			console.log("getRank",result);
-			callback();
+			callback(result);
 			return result;
 		});
 	});
@@ -313,7 +313,7 @@ app.set('views',"examples/views");
 
 // index page 
 app.get('/', function(req, res) {
-	var drinks = getRank(function(){
+	getRank(function(drinks){
 		    var tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.";
 
     res.render('pages/index', {
