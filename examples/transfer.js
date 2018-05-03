@@ -216,7 +216,7 @@ var http = require('http');
 
 function getRank(){
 	MongoClient.connect(url, (err, db) => {
-		sumCars(db, (err, result) => {
+		sumCars(db, (result) => {
 			db.close();
 			return result;
 		});
@@ -229,7 +229,7 @@ function getRank(){
 			console.log(res);
 			callback(res);
 		});
-	});
+	};
 }
 
 // Create a function to handle every HTTP request
