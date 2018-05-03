@@ -270,7 +270,7 @@ function handler(req, res){
     //res.end("<html><body><h1>Hello</h1></body></html>");
 
 };
-
+/*
 http.createServer(handler).listen(process.env.PORT, function(err){
   if(err){
     console.log('Error starting http server');
@@ -278,3 +278,30 @@ http.createServer(handler).listen(process.env.PORT, function(err){
     console.log("Server running at http://127.0.0.1:8000/ or http://localhost:8000/");
   };
 });
+*/
+
+// server.js
+// load the things we need
+var express = require('express');
+var app = express();
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
+// use res.render to load up an ejs view file
+
+// index page 
+app.get('/', function(req, res) {
+    res.render('pages/index');
+});
+
+// about page 
+app.get('/about', function(req, res) {
+    res.render('pages/about');
+});
+
+app.listen(8080);
+console.log('8080 is the magic port');
+
+
+
