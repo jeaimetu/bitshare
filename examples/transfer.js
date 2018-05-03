@@ -312,7 +312,15 @@ app.set('views',"examples/views");
 
 // index page 
 app.get('/', function(req, res) {
-	var drinks = getRank();
+	var drinks = getRank(,function(){
+		    var tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.";
+
+    res.render('pages/index', {
+        drinks: drinks,
+        tagline: tagline
+    });
+		
+	});
 	console.log(drinks);
 	/*
     var drinks = [
@@ -321,12 +329,7 @@ app.get('/', function(req, res) {
         { name: 'Scotch', drunkness: 10 }
     ];
     */
-    var tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.";
 
-    res.render('pages/index', {
-        drinks: drinks,
-        tagline: tagline
-    });
 });
 
 // about page 
