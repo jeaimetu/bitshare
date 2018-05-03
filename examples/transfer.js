@@ -214,12 +214,11 @@ setInterval(balanceCheck, 60000);
 
 var http = require('http'); 
 
-function getRank(callback){
+function getRank(){
 	MongoClient.connect(url, (err, db) => {
 		sumCars(db, (result) => {
 			db.close();
 			console.log("getRank",result);
-			callback(result);
 			return result;
 		});
 	});
@@ -314,15 +313,15 @@ app.set('views',"examples/views");
 // index page 
 app.get('/', function(req, res) {
 	getRank(function(drinks){
-		    var tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.";
-
-    res.render('pages/index', {
-        drinks: drinks,
-        tagline: tagline
-    });
+		console.log("in appget",drinks);
+		var tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.";
+    		res.render('pages/index', {
+        	drinks: drinks,
+        	tagline: tagline
+    		});
 		
 	});
-	console.log(drinks);
+	//console.log(drinks);
 	/*
     var drinks = [
         { name: 'Bloody Mary', drunkness: 3 },
