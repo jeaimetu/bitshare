@@ -233,7 +233,7 @@ function handler(req, res){
 	var sumCars = (db, callback) => {
     
     //var agr = [{$group: {_id: "$refer", all: { $sum: 1 } }}];  
-		var agr = [{$group: {_id: "$refer", all: { $sum: 1 } }}, {$sort: {_id: -1}}];  
+		var agr = [{$group: {_id: "$refer", all: { $sum: 1 } }}, {$sort: {all: -1}}];  
         var dbo = db.db("heroku_9cf4z9w3");
     var cursor = dbo.collection('customers').aggregate(agr).toArray( (err, res) => {
         
