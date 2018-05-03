@@ -214,6 +214,24 @@ setInterval(balanceCheck, 60000);
 
 var http = require('http'); 
 
+function getRank(){
+	MongoClient.connect(url, (err, db) => {
+		sumCars(db, (err, result) => {
+			db.close();
+			return result;
+		});
+	});
+	
+	var sumCars = (db, callback) => {
+		var agr = [{$group: {_id: "$refer", all: { $sum: 1 } }}, {$sort: {all: -1}}]; 
+		var dbo = db.db("heroku_9cf4z9w3");
+		var cursor = dbo.collection('customers').aggregate(agr).toArray( (err, res) => {
+			console.log(res);
+			callback(res);
+		});
+	});
+}
+
 // Create a function to handle every HTTP request
 function handler(req, res){
     res.setHeader('Content-Type', 'text/html');
@@ -293,11 +311,14 @@ app.set('views',"examples/views");
 
 // index page 
 app.get('/', function(req, res) {
+	var drinks = getRank();
+	/*
     var drinks = [
         { name: 'Bloody Mary', drunkness: 3 },
         { name: 'Martini', drunkness: 5 },
         { name: 'Scotch', drunkness: 10 }
     ];
+    */
     var tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.";
 
     res.render('pages/index', {
