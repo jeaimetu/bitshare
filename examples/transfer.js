@@ -287,6 +287,7 @@ var app = express();
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
+app.set('views',"examples/views");
 
 // use res.render to load up an ejs view file
 
