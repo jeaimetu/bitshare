@@ -214,11 +214,12 @@ setInterval(balanceCheck, 60000);
 
 var http = require('http'); 
 
-function getRank(){
+function getRank(cb){
 	MongoClient.connect(url, (err, db) => {
 		sumCars(db, (result) => {
 			db.close();
 			console.log("getRank",result);
+			cb(result);
 			return result;
 		});
 	});
