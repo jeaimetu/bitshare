@@ -3,7 +3,7 @@ import {ChainStore, FetchChain, PrivateKey, TransactionHelper, Aes, TransactionB
 
 //var privKey = "5KBuq5WmHvgePmB7w3onYsqLM8ESomM2Ae7SigYuuwg8MDHW7NN";
 var privKey = process.env.privKey;
-var http = require('http'); 
+//var http = require('http'); 
 let pKey = PrivateKey.fromWif(privKey);
 
 var MongoClient = require('mongodb').MongoClient;
@@ -284,7 +284,7 @@ function handler(req, res){
 
 };
 
-
+/*
 http.createServer(handler).listen(process.env.PORT, function(err){
   if(err){
     console.log('Error starting http server');
@@ -292,11 +292,11 @@ http.createServer(handler).listen(process.env.PORT, function(err){
     console.log("Server running at http://127.0.0.1:8000/ or http://localhost:8000/");
   };
 });
-
+*/
 
 // server.js
 // load the things we need
-/***
+
 var express = require('express');
 var app = express();
 
@@ -326,10 +326,8 @@ app.get('/', function(req, res) {
     ];
     ***/
 
-/* 
 });
-*/
-/*
+
 
 // about page 
 app.get('/about', function(req, res) {
@@ -337,7 +335,7 @@ app.get('/about', function(req, res) {
 });
 
 app.listen(process.env.PORT);
-*/
+
 
 
 
