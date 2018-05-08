@@ -308,7 +308,7 @@ http.createServer(handler).listen(process.env.PORT, function(err){
 
 // server.js
 // load the things we need
-/*
+/***
 var express = require('express');
 var app = express();
 
@@ -330,14 +330,15 @@ app.get('/', function(req, res) {
 		
 	});
 	//console.log(drinks);
-	/*
+	/***
     var drinks = [
         { name: 'Bloody Mary', drunkness: 3 },
         { name: 'Martini', drunkness: 5 },
         { name: 'Scotch', drunkness: 10 }
     ];
-    */
-
+    ***/
+*/
+/* 
 });
 */
 /*
