@@ -296,6 +296,7 @@ function handler(req, res){
     //res.end("<html><body><h1>Hello</h1></body></html>");
 
 };
+
 /*
 http.createServer(handler).listen(process.env.PORT, function(err){
   if(err){
@@ -337,7 +338,7 @@ app.get('/', function(req, res) {
         { name: 'Scotch', drunkness: 10 }
     ];
     ***/
-*/
+
 /* 
 });
 */
