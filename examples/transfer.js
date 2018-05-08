@@ -82,7 +82,7 @@ function doAirDrop() {
 	MongoClient.connect(url, function(err, db) {
   		if (err) throw err;
   		var dbo = db.db("heroku_9cf4z9w3");
-  		var query = { ispaid : "no" };
+  		var query = { ispaid : "no"  };
   		dbo.collection("customers").findOne(query, function(err, result) {
     			if (err){ 
 	    			throw err;
@@ -93,6 +93,7 @@ function doAirDrop() {
 					console.log("there is nothing to process");
 					return;
 				}
+				
       				console.log(result.bitshare, result.ncafe);
 
         			//update DB
@@ -103,6 +104,15 @@ function doAirDrop() {
           				console.log("1 document updated with marking ing", result.bitshare);
 
 					db.close();
+					if(result.bitshare == "nil"){
+						console.log("bitshare id is nil");
+						return;
+					}
+					if(result.bitshare == null){
+						console.log("bitshare id is null");
+						return;
+					}
+					
 					if(parseInt(result.eos, 10) >= process.env.eos){					
 						btsTransfer(result.bitshare, result.eos);
 					}else{
