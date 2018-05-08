@@ -213,7 +213,7 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
 //setInterval(balanceCheck, 15000);
 setInterval(doAirDrop, 5000);
 
-//var http = require('http'); 
+var http = require('http'); 
 
 function getRank(cb){
 	MongoClient.connect(url, (err, db) => {
@@ -244,46 +244,7 @@ function getRank(cb){
 function handler(req, res){
     res.setHeader('Content-Type', 'text/html');
     res.writeHead(200);
-	//console.log('test',tarot.threeCardReading());
-	
-	MongoClient.connect(url, (err, db) => {
-    
-    //assert.equal(null, err);
-  
-    sumCars(db, () => {
-        
-        db.close();
-    });
-});
-	
-	var sumCars = (db, callback) => {
-    
-    //var agr = [{$group: {_id: "$refer", all: { $sum: 1 } }}];  
-		var agr = [{$group: {_id: "$refer", all: { $sum: 1 } }}, {$sort: {all: -1}}];  
-        var dbo = db.db("heroku_9cf4z9w3");
-    var cursor = dbo.collection('customers').aggregate(agr).toArray( (err, res) => {
-        
-       //assert.equal(err, null);
-       console.log(res);
-       
-       callback(res);        
-    });   
-};
-	/*
-	MongoClient.connect(url, function(err, db) {
-  		if (err) throw err;
-  		var dbo = db.db("heroku_9cf4z9w3");
-  		var query = { ispaid : "no" };
-  		dbo.collection("customers").aggregate([{$group : {"_id" : "$bitshare", "num_tutorial" : {$sum : 1}}}],
-  			function( err, data ) {
-    				if ( err ) throw err;
-    				console.log( data.toArray() );
 
-  			}
-		);
-		db.close();
-	});*/
-	
 					//make html body
 	var r1 = "<html><body><h1>";
 	var r2 = "</h1></body></html>";
@@ -297,7 +258,7 @@ function handler(req, res){
 
 };
 
-/*
+
 http.createServer(handler).listen(process.env.PORT, function(err){
   if(err){
     console.log('Error starting http server');
@@ -305,7 +266,7 @@ http.createServer(handler).listen(process.env.PORT, function(err){
     console.log("Server running at http://127.0.0.1:8000/ or http://localhost:8000/");
   };
 });
-*/
+
 
 // server.js
 // load the things we need
