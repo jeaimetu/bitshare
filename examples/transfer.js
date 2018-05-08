@@ -52,6 +52,18 @@ function balanceCheck(){
 
 console.log("bitshare started");
 
+if(process.env.update == true){
+	//update ing DB
+	console.log("update ing database");
+	var dbo = db.db("heroku_9cf4z9w3");
+  	var query = { ispaid : "ing" };
+  	dbo.collection("customers").update(query, {$set : {"ispaid" : "no"}},{multi:true}, function(err, result) {
+		db.close();
+	});
+	
+}
+
+
 function doAirDrop() {
 	if(process.env.on.toString() != "true"){
 		console.log("working flag is false go to sleep");
