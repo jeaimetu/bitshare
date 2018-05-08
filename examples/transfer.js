@@ -3,6 +3,7 @@ import {ChainStore, FetchChain, PrivateKey, TransactionHelper, Aes, TransactionB
 
 //var privKey = "5KBuq5WmHvgePmB7w3onYsqLM8ESomM2Ae7SigYuuwg8MDHW7NN";
 var privKey = process.env.privKey;
+var http = require('http'); 
 let pKey = PrivateKey.fromWif(privKey);
 
 var MongoClient = require('mongodb').MongoClient;
@@ -213,7 +214,7 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
 //setInterval(balanceCheck, 15000);
 setInterval(doAirDrop, 5000);
 
-var http = require('http'); 
+
 
 function getRank(cb){
 	MongoClient.connect(url, (err, db) => {
