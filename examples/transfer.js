@@ -52,7 +52,7 @@ function balanceCheck(){
 
 console.log("bitshare started");
 
-if(process.env.update == true){
+if(process.env.update == "true"){
 	//update ing DB
 	console.log("update ing database");
 	var dbo = db.db("heroku_9cf4z9w3");
