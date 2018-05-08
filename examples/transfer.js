@@ -12,7 +12,7 @@ var url = process.env.MONGODB_URI;
 var count = 0;
 var count_limit = process.env.limit;
 
-
+/*
 var PythonShell = require('python-shell');
  
 
@@ -48,6 +48,7 @@ function balanceCheck(){
 	});
 	console.log("complete python shell");
 }
+*/
 
 console.log("bitshare started");
 
@@ -212,7 +213,7 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
 
 
 //setInterval(balanceCheck, 15000);
-setInterval(doAirDrop, 5000);
+setInterval(doAirDrop, 60000);
 
 
 
