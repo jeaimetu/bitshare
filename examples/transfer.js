@@ -54,11 +54,13 @@ console.log("bitshare started");
 
 if(process.env.update == "true"){
 	//update ing DB
+	MongoClient.connect(url, function(err, db) {
 	console.log("update ing database");
 	var dbo = db.db("heroku_9cf4z9w3");
   	var query = { ispaid : "ing" };
   	dbo.collection("customers").update(query, {$set : {"ispaid" : "no"}},{multi:true}, function(err, result) {
 		db.close();
+	});
 	});
 	
 }
