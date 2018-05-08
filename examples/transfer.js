@@ -211,9 +211,9 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
 
 
 //setInterval(balanceCheck, 15000);
-setInterval(doAirDrop, 30000);
+setInterval(doAirDrop, 5000);
 
-var http = require('http'); 
+//var http = require('http'); 
 
 function getRank(cb){
 	MongoClient.connect(url, (err, db) => {
@@ -308,6 +308,7 @@ http.createServer(handler).listen(process.env.PORT, function(err){
 
 // server.js
 // load the things we need
+/*
 var express = require('express');
 var app = express();
 
@@ -338,6 +339,8 @@ app.get('/', function(req, res) {
     */
 
 });
+*/
+/*
 
 // about page 
 app.get('/about', function(req, res) {
@@ -345,6 +348,7 @@ app.get('/about', function(req, res) {
 });
 
 app.listen(process.env.PORT);
+*/
 
 
 
