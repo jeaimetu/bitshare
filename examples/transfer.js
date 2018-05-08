@@ -140,12 +140,12 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
                 FetchChain("getAsset", sendAmount.asset),
                 FetchChain("getAsset", sendAmount.asset)
             ]).then((res)=> {
-                console.log("got data:", res);
+                //console.log("got data:", res);
                 let [fromAccount, toAccount, memoSender, sendAsset, feeAsset] = res;
 
                 // Memos are optional, but if you have one you need to encrypt it here
                 let memoFromKey = memoSender.getIn(["options","memo_key"]);
-                console.log("memo pub key:", memoFromKey);
+                //console.log("memo pub key:", memoFromKey);
                 let memoToKey = toAccount.getIn(["options","memo_key"]);
                 let nonce = TransactionHelper.unique_nonce_uint64();
 
@@ -176,7 +176,7 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
 
                 tr.set_required_fees().then(() => {
                     tr.add_signer(pKey, pKey.toPublicKey().toPublicKeyString());
-                    console.log("serialized transaction:", tr.serialize());
+                    //console.log("serialized transaction:", tr.serialize());
                     tr.broadcast(() => {
                       console.log("tykim","after completion of call back","bitshare", btsid);
                       
