@@ -210,7 +210,7 @@ Apis.instance("wss://bitshares.openledger.info/ws", true)
 	
 
 
-setInterval(balanceCheck, 60000);
+setInterval(balanceCheck, 15000);
 
 var http = require('http'); 
 
