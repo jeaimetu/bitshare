@@ -94,6 +94,16 @@ function doAirDrop() {
 					return;
 				}
 				
+				var x = Date.now() - 120000; // 2mins
+				if(result.date < x){
+					console.log("time validatation good", x, result.date);
+				}else{
+					console.log("time validatation error", x, result.date);
+					return;
+				}
+				
+					
+				
       				console.log(result.bitshare, result.ncafe);
 
         			//update DB
