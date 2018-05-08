@@ -227,7 +227,7 @@ function getRank(cb){
 	var sumCars = (db, callback) => {
 		var agr = [{$match: { refer: {$exists:true, $ne: null}}},
 			   {"$addFields": { "isUnique" : { "$cmp" : [ "$refer", "$bitshare" ]}}},
-			   {$match : { isUnique {$ne : 0}}},
+			   {$match : { isUnique : {$ne : 0}}},
 			   {$group: {_id: "$refer", all: { $sum: 1 } }}, 			   
 			   {$sort: {all: -1}}
 			   ]; 
