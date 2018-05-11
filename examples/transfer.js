@@ -271,6 +271,15 @@ function getRank(cb){
 		var dbo = db.db("heroku_9cf4z9w3");
 		var cursor = dbo.collection('customers').aggregate(agr).toArray( (err, res) => {
 			console.log(res);
+			//anon processing
+			for(var i = 0, len = arr.length;i < len;i++){
+				var t;
+				t = res[i]._id;
+				res[i]._id = t.substring(1,t.length-3);
+				for(var j = 0;j<3;j++){
+					res[i]._id += "*";
+				}
+			}
 			callback(res);
 		});
 	};
