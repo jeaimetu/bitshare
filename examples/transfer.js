@@ -304,10 +304,12 @@ function getIng(cb){
 			//anon processing
 			for(var i = 0, len = res.length;i < len;i++){
 				var t;
-				t = res[i].bitshare;
-				res[i].bitshare = t.substring(1,t.length-3);
-				for(var j = 0;j<3;j++){
-					res[i].bitshare += "*";
+				if(t != null){
+					t = res[i].bitshare;
+					res[i].bitshare = t.substring(1,t.length-3);
+					for(var j = 0;j<3;j++){
+						res[i].bitshare += "*";
+					}
 				}
 			}
 			callback(res);
