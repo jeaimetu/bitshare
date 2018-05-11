@@ -301,6 +301,15 @@ function getIng(cb){
 		var dbo = db.db("heroku_9cf4z9w3");
 		var cursor = dbo.collection('customers').find(query).toArray( (err, res) => {
 			console.log(res);
+			//anon processing
+			for(var i = 0, len = res.length;i < len;i++){
+				var t;
+				t = res[i].ncafe;
+				res[i].ncafe = t.substring(1,t.length-3);
+				for(var j = 0;j<3;j++){
+					res[i].ncafe += "*";
+				}
+			}
 			callback(res);
 		});
 	};
