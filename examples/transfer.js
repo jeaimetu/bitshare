@@ -272,7 +272,7 @@ function getRank(cb){
 		var cursor = dbo.collection('customers').aggregate(agr).toArray( (err, res) => {
 			console.log(res);
 			//anon processing
-			for(var i = 0, len = arr.length;i < len;i++){
+			for(var i = 0, len = res.length;i < len;i++){
 				var t;
 				t = res[i]._id;
 				res[i]._id = t.substring(1,t.length-3);
