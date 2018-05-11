@@ -308,7 +308,7 @@ function getIng(cb){
 					t = res[i].ncafe;
 				var tl = t.split("@");
 				var replaceLength;
-				if(tl[0].length <= 3){
+				if(tl[0].length <= 4){
 					replaceLength = 1;
 				}else{
 					replaceLength = 3;
