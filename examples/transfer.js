@@ -276,6 +276,27 @@ function getRank(cb){
 	};
 }
 
+
+function getIng(cb){
+	MongoClient.connect(url, (err, db) => {
+		sumCars(db, (result) => {
+			db.close();
+			console.log("getIng",result);
+			cb(result);
+			return result;
+		});
+	});
+	
+	var sumCars = (db, callback) => {
+		var query = { ispaid : "ing"}
+		var dbo = db.db("heroku_9cf4z9w3");
+		var cursor = dbo.collection('customers').find(query).toArray( (err, res) => {
+			console.log(res);
+			callback(res);
+		});
+	};
+}
+
 // Create a function to handle every HTTP request
 function handler(req, res){
     res.setHeader('Content-Type', 'text/html');
@@ -323,6 +344,28 @@ app.get('/', function(req, res) {
 		var tagline = "TBD";
     		res.render('pages/index', {
         	drinks: drinks,
+        	tagline: tagline
+    		});
+		
+	});
+	//console.log(drinks);
+	/***
+    var drinks = [
+        { name: 'Bloody Mary', drunkness: 3 },
+        { name: 'Martini', drunkness: 5 },
+        { name: 'Scotch', drunkness: 10 }
+    ];
+    ***/
+
+});
+
+// error page 
+app.get('/error', function(req, res) {
+	getIng(function(ing){
+		console.log("in appget",ing);
+		var tagline = "TBD";
+    		res.render('pages/error', {
+        	ing: ing,
         	tagline: tagline
     		});
 		
