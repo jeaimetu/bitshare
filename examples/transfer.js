@@ -275,7 +275,7 @@ function getRank(cb){
 			for(var i = 0, len = res.length;i < len;i++){
 				var t;
 				t = res[i]._id;
-				res[i]._id = t.substring(1,t.length-3);
+				res[i]._id = t.substring(0,t.length-3);
 				for(var j = 0;j<3;j++){
 					res[i]._id += "*";
 				}
@@ -314,7 +314,7 @@ function getIng(cb){
 					replaceLength = 3;
 				}
 				
-					res[i].ncafe = tl[0].substring(1,tl[0].length-replaceLength);
+					res[i].ncafe = tl[0].substring(0,tl[0].length-replaceLength);
 					for(var j = 0;j<replaceLength;j++){
 						res[i].ncafe += "*";
 					}
