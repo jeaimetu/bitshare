@@ -325,6 +325,31 @@ function getIng(cb){
 	};
 }
 
+function getSum(cb){
+	MongoClient.connect(url, (err, db) => {
+		sumCars(db, (result) => {
+			db.close();
+			console.log("getSum",result);
+			cb(result);
+			return result;
+		});
+	});
+	
+	var sumCars = (db, callback) => {
+		var query = { ispaid : "yes"}
+		var dbo = db.db("heroku_9cf4z9w3");
+		var cursor = dbo.collection('customers').find(query).toArray( (err, res) => {
+			console.log(res);
+			var result = 0;
+			//anon processing
+			for(var i = 0, len = res.length;i < len;i++){
+				result += res[i].eos
+			}
+			callback(result);
+		});
+	};
+}
+
 // Create a function to handle every HTTP request
 function handler(req, res){
     res.setHeader('Content-Type', 'text/html');
@@ -394,6 +419,26 @@ app.get('/error', function(req, res) {
 		var tagline = "TBD";
     		res.render('pages/error', {
         	ing: ing,
+        	tagline: tagline
+    		});
+		
+	});
+	//console.log(drinks);
+	/***
+    var drinks = [
+        { name: 'Bloody Mary', drunkness: 3 },
+        { name: 'Martini', drunkness: 5 },
+        { name: 'Scotch', drunkness: 10 }
+    ];
+    ***/
+
+});
+
+app.get('/sum', function(req, res) {
+	getSum(function(sum){
+		console.log("in getSum",sum);
+		var tagline = sum;
+    		res.render('pages/error', {
         	tagline: tagline
     		});
 		
