@@ -438,7 +438,7 @@ app.get('/sum', function(req, res) {
 	getSum(function(sum){
 		console.log("in getSum",sum);
 		var tagline = sum;
-    		res.render('pages/error', {
+    		res.render('pages/sum', {
         	tagline: tagline
     		});
 		
